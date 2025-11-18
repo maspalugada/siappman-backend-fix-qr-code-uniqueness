@@ -1,0 +1,23 @@
+name,instrument_type,unit,unit_code,destination_unit,destination_unit_code,jumlah,jumlah_steril,jumlah_kotor,jumlah_proses_cssd,location,description,specifications
+Surgical Scissors,Cutting Instrument,CSSD, Lt B1,CSSD,CSSD,IW BEDAH, Lt 6,IWB,5,5,0,0,Gedung VENTRICLE,High-quality surgical scissors,Material: Stainless Steel, Size: 15cm
+Surgical Forceps,Grasping Instrument,CSSD, Lt B1,CSSD,CSSD,ICU DEWASA, Lt 8,ICUD,3,3,0,0,Gedung VENTRICLE,Precision forceps,Type: Toothed, Size: 20cm
+Surgical Needle Holder,Holding Instrument,CSSD, Lt B1,CSSD,CSSD,IW BEDAH, Lt 6,IWB,2,2,0,0,Gedung VENTRICLE,Mayo-Hegar needle holder,Type: Mayo-Hegar, Size: 16cm
+Pressure Gauge,Measuring Instrument,CSSD, Lt B1,CSSD,CSSD,ICU DEWASA, Lt 8,ICUD,1,1,0,0,Gedung VENTRICLE,High-precision pressure gauge,Range: 0-300 psi, Accuracy: ±1%
+Temperature Sensor,Monitoring Instrument,CSSD, Lt B1,CSSD,CSSD,OK DEWASA, Lt 5,OKD,1,1,0,0,Gedung VENTRICLE,Industrial temperature sensor,Range: -50°C to 200°C, Type: RTD
+Surgical Scalpel,Cutting Instrument,CSSD, Lt B1,CSSD,CSSD,IW BEDAH, Lt 6,IWB,10,10,0,0,Gedung VENTRICLE,Disposable surgical scalpel,Size: #10, Material: Carbon Steel
+Surgical Gloves,Protective Equipment,CSSD, Lt B1,CSSD,CSSD,OK DEWASA, Lt 5,OKD,50,50,0,0,Gedung VENTRICLE,Latex-free surgical gloves,Size: Medium, Sterile: Yes
+Surgical Mask,Protective Equipment,CSSD, Lt B1,CSSD,CSSD,ICU DEWASA, Lt 8,ICUD,25,25,0,0,Gedung VENTRICLE,N95 surgical mask,Level: N95, Color: Blue
+IV Catheter,Medical Device,CSSD, Lt B1,CSSD,CSSD,ICU DEWASA, Lt 8,ICUD,20,20,0,0,Gedung VENTRICLE,Peripheral IV catheter,Gauge: 18G, Length: 1.25 inches
+Syringe,Medical Device,CSSD, Lt B1,CSSD,CSSD,IW BEDAH, Lt 6,IWB,30,30,0,0,Gedung VENTRICLE,Disposable syringe,Size: 10ml, Type: Luer Lock
+Bandage,Gauze and Bandages,CSSD, Lt B1,CSSD,CSSD,OK DEWASA, Lt 5,OKD,15,15,0,0,Gedung VENTRICLE,Sterile gauze bandage,Size: 4x4 inches, Material: Cotton
+Surgical Drape,Surgical Linens,CSSD, Lt B1,CSSD,CSSD,IW BEDAH, Lt 6,IWB,8,8,0,0,Gedung VENTRICLE,Disposable surgical drape,Size: 60x80 cm, Material: Non-woven
+Anesthesia Machine,Medical Equipment,CSSD, Lt B1,CSSD,CSSD,OK DEWASA, Lt 5,OKD,1,1,0,0,Gedung VENTRICLE,Digital anesthesia machine,Type: Electronic, Ventilator: Integrated
+Defibrillator,Medical Equipment,CSSD, Lt B1,CSSD,CSSD,ICU DEWASA, Lt 8,ICUD,2,2,0,0,Gedung VENTRICLE,Automated external defibrillator,Type: AED, Energy: 150-360J
+Patient Monitor,Medical Equipment,CSSD, Lt B1,CSSD,CSSD,ICU DEWASA, Lt 8,ICUD,5,5,0,0,Gedung VENTRICLE,Multi-parameter patient monitor,Parameters: ECG, SpO2, NIBP, Temp
+Ventilator,Medical Equipment,CSSD, Lt B1,CSSD,CSSD,ICU DEWASA, Lt 8,ICUD,3,3,0,0,Gedung VENTRICLE,Mechanical ventilator,Mode: Volume Control, Tidal Volume: 200-2000ml
+Ultrasound Machine,Diagnostic Equipment,CSSD, Lt B1,CSSD,CSSD,IW BEDAH, Lt 6,IWB,2,2,0,0,Gedung VENTRICLE,Portable ultrasound system,Probe: Convex, Frequency: 2-5MHz
+X-Ray Machine,Diagnostic Equipment,CSSD, Lt B1,CSSD,CSSD,RADIOLOGI, Lt 2,RAD,1,1,0,0,Gedung VENTRICLE,Digital X-ray system,Type: Fixed, Power: 50kW
+CT Scanner,Diagnostic Equipment,CSSD, Lt B1,CSSD,CSSD,RADIOLOGI, Lt 2,RAD,1,1,0,0,Gedung VENTRICLE,64-slice CT scanner,Type: Helical, Slices: 64
+MRI Machine,Diagnostic Equipment,CSSD, Lt B1,CSSD,CSSD,RADIOLOGI, Lt 2,RAD,1,1,0,0,Gedung VENTRICLE,1.5T MRI system,Type: Closed, Field Strength: 1.5 Tesla
+Endoscope,Endoscopic Equipment,CSSD, Lt B1,CSSD,CSSD,ENDOSKOPI, Lt 3,END,4,4,0,0,Gedung VENTRICLE,Flexible endoscope,Diameter: 9.8mm, Length: 1300mm
+Colonoscope,Endoscopic Equipment,CSSD, Lt B1,CSSD,CSSD,ENDOSKOPI, Lt 3,END,2,2,0,0,Gedung VENTRICLE,Video colonoscope,Type: Pediatric, Length: 1680mm
