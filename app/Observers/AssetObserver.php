@@ -60,8 +60,13 @@ class AssetObserver
         $jumlah = (int) $asset->jumlah;
         $unitCode = $asset->unit_code ?: 'DEFAULT';
 
+        // Determine the padding for the sequence number based on the total number of items
+        $sequencePadding = strlen((string) $jumlah);
+
         for ($i = 1; $i <= $jumlah; $i++) {
-            $qrCodeString = sprintf('%s-%06d-%02d', strtoupper($unitCode), $asset->id, $i);
+            // Format sequence number with dynamic padding
+            $sequenceFormatted = str_pad($i, $sequencePadding, '0', STR_PAD_LEFT);
+            $qrCodeString = sprintf('%s-%06d-%s', strtoupper($unitCode), $asset->id, $sequenceFormatted);
 
             // Generate SVG QR code
             $qrImageSvg = \SimpleSoftwareIO\QrCode\Facades\QrCode::size(200)->generate($qrCodeString);

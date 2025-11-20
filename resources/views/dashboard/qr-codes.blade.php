@@ -6,11 +6,10 @@
 <div class="container">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
         <div>
-            <h1 style="font-size: 2rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.5rem;">QR Codes</h1>
-            <p style="color: var(--gray-600);">Manage your QR codes</p>
+        <h1 style="font-size: 2rem; font-weight: 700; color: var(--foreground); margin-bottom: 0.5rem;">QR Codes</h1>
+        <p style="color: var(--muted-foreground);">Manage your QR codes</p>
         </div>
         <a href="{{ route('dashboard.qr-codes.create') }}" class="btn btn-primary">
-            <span style="margin-right: 0.5rem;">+</span>
             Create QR Code
         </a>
     </div>
@@ -19,27 +18,27 @@
         <div class="card">
             <div class="card-header">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--gray-900);">Asset QR Codes</h3>
+                <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--foreground);">Asset QR Codes</h3>
                     <div style="display: flex; gap: 0.5rem;">
                         <button onclick="selectAll()" class="btn btn-secondary btn-sm">Select All</button>
                         <button onclick="downloadSelected()" class="btn btn-primary btn-sm" id="downloadSelectedBtn" style="display: none;">Download Selected</button>
                         <button onclick="printSelected()" class="btn btn-secondary btn-sm" id="printSelectedBtn" style="display: none;">Print Selected</button>
-                        <button onclick="createCombinedQR()" class="btn btn-success btn-sm" id="createCombinedBtn" style="display: none;">Create Combined QR</button>
+                    <button onclick="createCombinedQR()" class="btn btn-primary btn-sm" id="createCombinedBtn" style="display: none;">Create Combined QR</button>
                     </div>
                 </div>
             </div>
             <div class="card-body">
                 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
                     @foreach($assets as $asset)
-                        <div class="card qr-card" style="border: 1px solid var(--gray-200);" data-asset-id="{{ $asset->id }}">
+                    <div class="card qr-card" style="border: 1px solid var(--border);" data-asset-id="{{ $asset->id }}">
                             <div class="card-body">
                                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
                                     <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
                                         <input type="checkbox" class="qr-checkbox" data-asset-id="{{ $asset->id }}" onchange="updateSelection()">
                                         <div>
-                                            <h4 style="font-size: 1.125rem; font-weight: 600; color: var(--gray-900); margin-bottom: 0.25rem;">{{ $asset->name }}</h4>
-                                            <p style="color: var(--gray-600); font-size: 0.875rem;">{{ $asset->location }}</p>
-                                            <p style="color: var(--gray-500); font-size: 0.75rem;">{{ $asset->instrument_type }}</p>
+                                        <h4 style="font-size: 1.125rem; font-weight: 600; color: var(--foreground); margin-bottom: 0.25rem;">{{ $asset->name }}</h4>
+                                        <p style="color: var(--muted-foreground); font-size: 0.875rem;">{{ $asset->location }}</p>
+                                        <p style="color: var(--muted-foreground); font-size: 0.75rem;">{{ $asset->instrument_type }}</p>
                                         </div>
                                     </div>
                                     <span class="badge {{ $asset->status === 'active' ? 'badge-success' : 'badge-secondary' }}">{{ ucfirst($asset->status) }}</span>
@@ -59,10 +58,9 @@
     @else
         <div class="card">
             <div class="card-body">
-                <div style="text-align: center; color: var(--gray-500); padding: 3rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--gray-900); margin-bottom: 0.5rem;">No QR Codes Yet</h3>
-                    <p style="color: var(--gray-600); margin-bottom: 1.5rem;">Create your first QR code to get started</p>
+            <div style="text-align: center; color: var(--muted-foreground); padding: 3rem;">
+                <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--foreground); margin-bottom: 0.5rem;">No QR Codes Yet</h3>
+                <p style="color: var(--muted-foreground); margin-bottom: 1.5rem;">Create your first QR code to get started</p>
                     <a href="{{ route('dashboard.qr-codes.create') }}" class="btn btn-primary">Create Your First QR Code</a>
                 </div>
             </div>
