@@ -9,19 +9,16 @@
         <p style="color: var(--gray-600);">Selamat Datang kembali, {{ Auth::user()->name }}!</p>
     </div>
 
-    <div class="dashboard-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+    <div class="dashboard-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
         <!-- QR Codes Card -->
         @can('can_view_qr_codes')
         <div class="card">
             <div class="card-body">
-                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                    <div style="font-size: 2rem; margin-right: 1rem;">📱</div>
-                    <div>
-                        <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--gray-900); margin-bottom: 0.25rem;">QR Codes</h3>
-                        <p style="color: var(--gray-600); font-size: 0.875rem;">Manage QR codes</p>
-                    </div>
+                <div style="margin-bottom: 1rem;">
+                    <h3 style="font-size: 1.125rem; font-weight: 600; color: var(--card-foreground); margin-bottom: 0.25rem;">QR Codes</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem;">Manage QR codes</p>
                 </div>
-                <a href="{{ route('dashboard.qr-codes') }}" class="btn btn-primary" style="width: 100%;">Manage QR Codes</a>
+                <a href="{{ route('dashboard.qr-codes') }}" class="btn btn-secondary" style="width: 100%;">Manage QR Codes</a>
             </div>
         </div>
         @endcan
@@ -30,14 +27,11 @@
         @can('can_view_assets')
         <div class="card">
             <div class="card-body">
-                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                    <div style="font-size: 2rem; margin-right: 1rem;">📦</div>
-                    <div>
-                        <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--gray-900); margin-bottom: 0.25rem;">Assets</h3>
-                        <p style="color: var(--gray-600); font-size: 0.875rem;">Manage instruments & equipment</p>
-                    </div>
+                <div style="margin-bottom: 1rem;">
+                    <h3 style="font-size: 1.125rem; font-weight: 600; color: var(--card-foreground); margin-bottom: 0.25rem;">Assets</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem;">Manage instruments & equipment</p>
                 </div>
-                <a href="{{ route('dashboard.assets.index') }}" class="btn btn-primary" style="width: 100%;">Manage Assets</a>
+                <a href="{{ route('dashboard.assets.index') }}" class="btn btn-secondary" style="width: 100%;">Manage Assets</a>
             </div>
         </div>
         @endcan
@@ -46,14 +40,11 @@
         @can('can_view_scan_history')
         <div class="card">
             <div class="card-body">
-                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                    <div style="font-size: 2rem; margin-right: 1rem;">📊</div>
-                    <div>
-                        <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--gray-900); margin-bottom: 0.25rem;">Scan History</h3>
-                        <p style="color: var(--gray-600); font-size: 0.875rem;">View scan activities</p>
-                    </div>
+                <div style="margin-bottom: 1rem;">
+                    <h3 style="font-size: 1.125rem; font-weight: 600; color: var(--card-foreground); margin-bottom: 0.25rem;">Scan History</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem;">View scan activities</p>
                 </div>
-                <a href="{{ route('dashboard.scan-history') }}" class="btn btn-primary" style="width: 100%;">View History</a>
+                <a href="{{ route('dashboard.scan-history') }}" class="btn btn-secondary" style="width: 100%;">View History</a>
             </div>
         </div>
         @endcan
@@ -61,82 +52,41 @@
         <!-- Profile Card -->
         <div class="card">
             <div class="card-body">
-                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                    <div style="font-size: 2rem; margin-right: 1rem;">👤</div>
-                    <div>
-                        <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--gray-900); margin-bottom: 0.25rem;">Profile</h3>
-                        <p style="color: var(--gray-600); font-size: 0.875rem;">Manage your account</p>
-                    </div>
+                <div style="margin-bottom: 1rem;">
+                    <h3 style="font-size: 1.125rem; font-weight: 600; color: var(--card-foreground); margin-bottom: 0.25rem;">Profile</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem;">Manage your account</p>
                 </div>
-                <a href="{{ route('dashboard.profile') }}" class="btn btn-primary" style="width: 100%;">Edit Profile</a>
+                <a href="{{ route('dashboard.profile') }}" class="btn btn-secondary" style="width: 100%;">Edit Profile</a>
             </div>
         </div>
     </div>
 
-    <style>
-        @media (max-width: 768px) {
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .card-body {
-                padding: 1rem;
-            }
-
-            .card-body h3 {
-                font-size: 1.1rem;
-            }
-
-            .card-body p {
-                font-size: 0.8rem;
-            }
-
-            .card-body div[style*="font-size: 2rem"] {
-                font-size: 1.5rem !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .dashboard-grid {
-                gap: 0.75rem;
-            }
-
-            .card-body {
-                padding: 0.75rem;
-            }
-
-            .card-body h3 {
-                font-size: 1rem;
-            }
-
-            .card-body p {
-                font-size: 0.75rem;
-            }
-
-            .card-body div[style*="font-size: 2rem"] {
-                font-size: 1.25rem !important;
-            }
-        }
-    </style>
-
     <!-- Quick Actions -->
     <div class="card">
         <div class="card-header">
-            <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--gray-900);">Quick Actions</h3>
+            <h3 style="font-size: 1.25rem; font-weight: 600;">Quick Actions</h3>
         </div>
         <div class="card-body">
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                 <a href="{{ route('scanner') }}" class="btn btn-primary">
-                    <span style="margin-right: 0.5rem;">📱</span>
                     Start Scanning
                 </a>
                 <a href="{{ route('dashboard.assets.create') }}" class="btn btn-secondary">
-                    <span style="margin-right: 0.5rem;">+</span>
                     Add New Asset
                 </a>
             </div>
         </div>
     </div>
 </div>
+
+@push('styles')
+<style>
+    @media (max-width: 768px) {
+        .dashboard-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+    }
+</style>
+@endpush
 @endsection
