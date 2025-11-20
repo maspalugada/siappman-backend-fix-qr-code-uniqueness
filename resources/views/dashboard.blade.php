@@ -11,6 +11,7 @@
 
     <div class="dashboard-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
         <!-- QR Codes Card -->
+        @can('can_view_qr_codes')
         <div class="card">
             <div class="card-body">
                 <div style="display: flex; align-items: center; margin-bottom: 1rem;">
@@ -23,8 +24,10 @@
                 <a href="{{ route('dashboard.qr-codes') }}" class="btn btn-primary" style="width: 100%;">Manage QR Codes</a>
             </div>
         </div>
+        @endcan
 
         <!-- Assets Card -->
+        @can('can_view_assets')
         <div class="card">
             <div class="card-body">
                 <div style="display: flex; align-items: center; margin-bottom: 1rem;">
@@ -37,8 +40,10 @@
                 <a href="{{ route('dashboard.assets.index') }}" class="btn btn-primary" style="width: 100%;">Manage Assets</a>
             </div>
         </div>
+        @endcan
 
         <!-- Scan History Card -->
+        @can('can_view_scan_history')
         <div class="card">
             <div class="card-body">
                 <div style="display: flex; align-items: center; margin-bottom: 1rem;">
@@ -51,6 +56,7 @@
                 <a href="{{ route('dashboard.scan-history') }}" class="btn btn-primary" style="width: 100%;">View History</a>
             </div>
         </div>
+        @endcan
 
         <!-- Profile Card -->
         <div class="card">
