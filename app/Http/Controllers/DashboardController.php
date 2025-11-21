@@ -16,7 +16,14 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('dashboard');
+        $user = Auth::user();
+        $totalScans = $user->scanActivities()->count();
+        $recentActivities = $user->scanActivities()->with('scannable')
+            ->latest('scanned_at')
+            ->take(5)
+            ->get();
+
+        return view('dashboard', compact('totalScans', 'recentActivities'));
     }
 
     public function qrCodes()

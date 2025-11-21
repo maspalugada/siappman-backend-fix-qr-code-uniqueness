@@ -202,16 +202,17 @@ class AssetController extends Controller
             }
         });
 
-        // Check for duplicate asset (same name, instrument_type, unit, location)
+        // Check for duplicate asset (same name, instrument_type, location)
         $existingAsset = Asset::where('name', $request->name)
             ->where('instrument_type', $request->instrument_type)
-            ->where('unit', $request->unit)
-            ->where('destination_unit', $request->destination_unit)
             ->where('location', $request->location)
             ->first();
 
         if ($existingAsset) {
-            return back()->withErrors(['duplicate' => 'Alat Instrumen Sudah Tersedia'])->withInput();
+            // If a similar asset exists, check if unit and destination_unit also match
+            if ($existingAsset->unit === $request->unit && $existingAsset->destination_unit === $request->destination_unit) {
+                return back()->withErrors(['duplicate' => 'Alat Instrumen Sudah Tersedia dengan unit dan lokasi yang sama.'])->withInput();
+            }
         }
 
         if ($validator->fails()) {
@@ -334,16 +335,6 @@ class AssetController extends Controller
             'specifications' => $request->specifications,
             'status' => $request->status,
         ]);
-
-        // If jumlah changed and QR codes count no longer matches, regenerate QR codes and images
-        if (is_numeric($request->jumlah) && $asset->qr_codes && count($asset->qr_codes) !== (int)$request->jumlah) {
-            $qrCodes = $this->generateAssetQrCodes($asset->unit_code, $asset->location, $asset->id, $asset->jumlah);
-            $qrImages = $this->generateAssetQrImages($qrCodes);
-            $asset->qr_code = $qrCodes[0] ?? $asset->qr_code;
-            $asset->qr_codes = $qrCodes;
-            $asset->qr_images = $qrImages;
-            $asset->save();
-        }
 
         return redirect()->route('dashboard.assets.index')->with('success', 'Asset updated successfully.');
     }
@@ -681,50 +672,5 @@ class AssetController extends Controller
             'updated_at' => $asset->updated_at
         ]);
     }
-
-    /**
-     * Generate QR code for asset based on unit code and asset ID.
-     *
-     * NOTE: We generate QR codes AFTER the asset is saved, using the asset ID to ensure uniqueness.
-     */
-    private function generateAssetQrCode($unitCode, $locationName, $assetId, $index)
-    {
-        // Format: UNIT-<assetId zero-padded 6>-<sequence zero-padded 2>
-        // e.g., CSSD-000123-01
-        return sprintf('%s-%06d-%02d', strtoupper($unitCode), $assetId, $index);
-    }
-
-    /**
-     * Generate multiple unique QR codes for an asset based on jumlah.
-     */
-    private function generateAssetQrCodes($unitCode, $locationName, $assetId, $jumlah)
-    {
-        $qrCodes = [];
-
-        for ($i = 1; $i <= (int)$jumlah; $i++) {
-            $qrCodes[] = $this->generateAssetQrCode($unitCode, $locationName, $assetId, $i);
-        }
-
-        return $qrCodes;
-    }
-
-    /**
-     * Generate QR code images as base64 encoded strings for an array of QR codes.
-     */
-    private function generateAssetQrImages($qrCodes)
-    {
-        $qrImages = [];
-
-        foreach ($qrCodes as $qrCode) {
-            // Generate SVG QR code using SimpleSoftwareIO QRCode
-            $qrImageSvg = \SimpleSoftwareIO\QrCode\Facades\QrCode::size(200)->generate($qrCode);
-
-            // Convert SVG to base64 data URL
-            $qrImages[] = 'data:image/svg+xml;base64,' . base64_encode($qrImageSvg);
-        }
-
-        return $qrImages;
-    }
-
 
 }

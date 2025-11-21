@@ -61,6 +61,43 @@
         </div>
     </div>
 
+    <!-- My Activity Summary -->
+    @if($recentActivities->count() > 0)
+    <div class="card" style="margin-top: 2rem;">
+        <div class="card-header">
+            <h3 style="font-size: 1.25rem; font-weight: 600;">My Activity Summary</h3>
+        </div>
+        <div class="card-body">
+            <div style="margin-bottom: 1.5rem; text-align: center;">
+                <p style="font-size: 1rem; color: var(--muted-foreground); margin-bottom: 0.25rem;">Total Scans</p>
+                <p style="font-size: 2.5rem; font-weight: 700; color: var(--foreground);">{{ $totalScans }}</p>
+            </div>
+
+            <h4 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem;">Recent Activities</h4>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <th style="padding: 0.75rem 1rem; text-align: left; font-weight: 600; color: var(--muted-foreground);">Asset</th>
+                            <th style="padding: 0.75rem 1rem; text-align: left; font-weight: 600; color: var(--muted-foreground);">Action</th>
+                            <th style="padding: 0.75rem 1rem; text-align: left; font-weight: 600; color: var(--muted-foreground);">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($recentActivities as $activity)
+                            <tr style="border-bottom: 1px solid var(--border);">
+                                <td style="padding: 0.75rem 1rem;">{{ $activity->scannable->name ?? 'N/A' }}</td>
+                                <td style="padding: 0.75rem 1rem;">{{ $activity->action }}</td>
+                                <td style="padding: 0.75rem 1rem; font-size: 0.875rem; color: var(--muted-foreground);">{{ $activity->scanned_at->diffForHumans() }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @endif
+
     <!-- Quick Actions -->
     <div class="card">
         <div class="card-header">
